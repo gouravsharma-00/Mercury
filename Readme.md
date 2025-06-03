@@ -1,4 +1,5 @@
 # Mercury 🍵
+
 AI powered manager for code review, feature and Employee Productivity Index (EPI) reports and all a manager can do.
 ---
 
