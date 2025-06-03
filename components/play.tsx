@@ -28,9 +28,9 @@ export default function MindReader() {
       setTimeout(() => {
         setProcessing(false);
         setRevealed(true);
-      }, 100); // slight delay before showing result
+      }, 500); // slight delay before showing result
     }
-  }, 500); // 5 seconds between steps
+  }, 4000); // 4 seconds between steps
   };
 
   const reset = () => {
