@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 export default function MindReader() {
   const [input, setInput] = useState('');
@@ -102,11 +103,13 @@ export default function MindReader() {
         {userConfirmed === true && (
           <div className="mt-6">
             <p className="text-xl mb-2">😎 I knew it! I'm awesome.</p>
-            <img
-              src="https://th.bing.com/th/id/OIP.m-EjvY_T0FYH_TSGPVsUkgHaGp?rs=1&pid=ImgDetMain" // Proud man image
-              alt="Proud man"
-              className="rounded-xl mx-auto mt-4 shadow-lg"
-            />
+<Image
+  src="https://th.bing.com/th/id/OIP.m-EjvY_T0FYH_TSGPVsUkgHaGp?rs=1&pid=ImgDetMain"
+  alt="Proud man"
+  width={400}
+  height={350}
+  className="rounded-xl mx-auto mt-4 shadow-lg"
+/>
             <button
               onClick={reset}
               className="mt-6 bg-purple-600 hover:bg-purple-700 transition p-3 rounded-lg w-full"
@@ -119,11 +122,13 @@ export default function MindReader() {
         {userConfirmed === false && (
           <div className="mt-6">
             <p className="text-xl mb-2">🚓 hmmmm................... .</p>
-            <img
-              src="https://i.pinimg.com/736x/d3/48/b0/d348b0a3f3cdb1c8211f7f57b0e59487.jpg" // Cop saying you're lying image
-              alt="Cop says you're lying"
-              className="rounded-xl mx-auto mt-4 shadow-lg"
-            />
+<Image
+  src="https://i.pinimg.com/736x/d3/48/b0/d348b0a3f3cdb1c8211f7f57b0e59487.jpg"
+  alt="Cop says you're lying"
+  width={400}
+  height={350}     // specify height
+  className="rounded-xl mx-auto mt-4 shadow-lg"
+/>
             <button
               onClick={reset}
               className="mt-6 bg-purple-600 hover:bg-purple-700 transition p-3 rounded-lg w-full"
