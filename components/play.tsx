@@ -108,7 +108,7 @@ export default function MindReader() {
   alt="Proud man"
   width={400}
   height={350}
-  className="rounded-xl mx-auto mt-4 shadow-lg"
+  className="rounded mx-auto mt-4"
 />
             <button
               onClick={reset}
@@ -127,7 +127,7 @@ export default function MindReader() {
   alt="Cop says you're lying"
   width={400}
   height={350}     // specify height
-  className="rounded-xl mx-auto mt-4 shadow-lg"
+  className="rounded mx-auto mt-4"
 />
             <button
               onClick={reset}
