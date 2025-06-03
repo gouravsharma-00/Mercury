@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "AI manager",
   "main": "main.js",
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -32,8 +33,10 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.8",
     "@types/node": "^22.15.29",
     "@types/react": "^19.1.6",
+    "tailwindcss": "^4.1.8",
     "typescript": "^5.8.3"
   }
 }
