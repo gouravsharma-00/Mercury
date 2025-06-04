@@ -1,7 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
+import Cookie from '@utils/cookie'
 
-export function Header() {
+export async function Header() {
+    const token = await Cookie()
     return(
         <header role='banner'>
             <fieldset>
@@ -9,6 +11,9 @@ export function Header() {
                     <ul>
                         <li><Link href="/">Home</Link></li>
                         <li><Link href="https://github.com/gouravsharma-00/Mercury">Github</Link></li>
+                        {
+                            token ? <li><Link href="/api/auth/logout">logout</Link></li> : ""
+                        }
                     </ul>
                 </nav>              
             </fieldset>

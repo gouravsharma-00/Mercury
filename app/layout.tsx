@@ -1,4 +1,5 @@
 import React from 'react'
+import { Header, Footer } from '@components/outline'
 
 export default function RootLayout({children} : {children : React.ReactNode}) {
     return(
@@ -27,7 +28,9 @@ export default function RootLayout({children} : {children : React.ReactNode}) {
 
                 <title>mercury | AI Manager</title></head>
             <body>
+                <Header />
                 {children}
+                <Footer />
             </body>
         </html>
     )

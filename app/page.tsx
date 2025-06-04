@@ -1,5 +1,4 @@
 import React from 'react'
-import { Header, Footer } from '@components/outline'
 import Cookie from '@utils/cookie'
 import User from '@components/user'
 
@@ -9,7 +8,6 @@ export default async function Page() {
 
     return (
         <>
-            <Header />
             <main style={{padding: "1rem"}}>
                 <h1>Welcome To Mercury | AI Manager</h1>
                 {
@@ -25,7 +23,6 @@ export default async function Page() {
                     )
                 }
             </main>
-            <Footer />
         </>
     )
 }
