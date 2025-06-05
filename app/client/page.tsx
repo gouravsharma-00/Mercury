@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect, Suspense } from "react";
 
-export function Repo() {
+function Repo() {
     const [data, setData] = useState(null);
     const params = useSearchParams()
 
