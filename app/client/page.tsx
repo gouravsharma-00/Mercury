@@ -60,7 +60,7 @@ export default function Page() {
                 </>
 
             }
-            <span>set up AI Manager for this repo <button>call</button></span>
+            <span>set up AI Manager for this repo <Link href={`/api/robot?id=${ID}&token=${token}`}>Call</Link></span>
         </>
 
     )
