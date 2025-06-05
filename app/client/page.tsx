@@ -1,4 +1,6 @@
 "use client"
+export const dynamic = "force-dynamic"; // Error occurred prerendering page
+
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -11,14 +13,15 @@ export default function Page() {
     const Name = params.get("repo_name")
     const token = params.get("token")
 
-    useEffect(() => {
+   useEffect(() => {
+        if (!ID || !token) return;
         async function run() {
-            const res = await fetch(`/api/gitlab/review?id=${ID}&token=${token}`)
-            const result = await res.json()
-            setData(result)
+            const res = await fetch(`/api/gitlab/review?id=${ID}&token=${token}`);
+            const result = await res.json();
+            setData(result);
         }
-        run()
-    }, [])
+        run();
+    }, [ID, token]);
 
     return (
         <>
