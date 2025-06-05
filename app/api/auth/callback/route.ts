@@ -27,17 +27,17 @@ export async function GET(req: Request) {
   (await cookies()).set('gitlab_token', data.access_token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
-    maxAge: 60 * 60 * 24, // 1 day
+    maxAge: 60 * 60 * 24 * 30, // 30 day
     path: '/',
   });
 
   // Refresh Token
-  (await cookies()).set('gitlab_refresh_token', data.refresh_token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    maxAge: 60 * 60 * 24 * 30, // 30 days
-    path: '/',
-  });
+  // (await cookies()).set('gitlab_refresh_token', data.refresh_token, {
+  //   httpOnly: true,
+  //   secure: process.env.NODE_ENV === 'production',
+  //   maxAge: 60 * 60 * 24 * 30, // 30 days
+  //   path: '/',
+  // });
 
   // Redirect to dashboard or home
   return NextResponse.redirect(new URL('/', req.url));

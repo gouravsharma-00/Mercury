@@ -15,12 +15,7 @@ export default async function Cookie() {
 
     // If expired, refresh
     if (test.status == 401  && refresh) {
-        console.log(refresh)
-        const res = await fetch(`http://localhost:3000/api/auth/cookie?refresh=${refresh}`)
-        const data = await res.json()
-
-        console.log(data)
-        return data.access_token;
+        return null;
     }
 
 
