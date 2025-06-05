@@ -3,9 +3,9 @@ export const dynamic = "force-dynamic"; // Error occurred prerendering page
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 
-export default function Page() {
+export function Repo() {
     const [data, setData] = useState(null);
     const params = useSearchParams()
 
@@ -66,5 +66,13 @@ export default function Page() {
             <span>set up AI Manager for this repo <Link href={`/api/robot?id=${ID}&token=${token}`}>Call</Link></span>
         </>
 
+    )
+}
+
+export default function Page() {
+    return(
+        <Suspense fallback={<p>loading...</p>}>
+            <Repo />
+        </Suspense>
     )
 }
