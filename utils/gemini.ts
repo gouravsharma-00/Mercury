@@ -10,21 +10,21 @@ if (!API_KEY) {
 }
 
 // Initialize the Generative AI client
-const genAI = new GoogleGenerativeAI({ apiKey: API_KEY });
+const genAI = new GoogleGenerativeAI( API_KEY );
 
-async function Run() {
+async function Run(prompt) {
   // For text-only input, use the gemini-pro model
-  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
-  const prompt = "hello";
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
   try {
-    const result = await model.generateContent(prompt);
+    const result = await model.generateContent(`You are a senior software developer and manager, review and give feedback for this code - ${prompt}`);
     const response = await result.response;
     const text = response.text();
     console.log(text);
+    return text;
   } catch (error) {
     console.error("Error generating content:", error);
+    return "No"
   }
 }
 

@@ -14,9 +14,8 @@ export async function POST(req: NextRequest) {
 
 
   try {
-    Run()
-    const text = "Hello"
-    return NextResponse.json({text}, {status: 200})
+    const response = await Run(content)
+    return NextResponse.json({text: response}, {status: 200})
 
   }catch(err) {
     return NextResponse.json({error: err}, {status: 500})
