@@ -17,10 +17,10 @@ async function Run(prompt) {
   const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
   try {
-    const result = await model.generateContent(`You are a senior software developer and manager, review and give feedback for this code - ${prompt}`);
+    const result = await model.generateContent(`${prompt}`);
     const response = await result.response;
     const text = response.text();
-    console.log(text);
+    // console.log(text);
     return text;
   } catch (error) {
     console.error("Error generating content:", error);

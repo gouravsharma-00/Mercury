@@ -5,8 +5,8 @@ export async function POST(req: NextRequest) {
   // API
   console.log("API Called :")
 
-  const { content } = await req.json()
-  if(!content) {
+  const { prompt } = await req.json()
+  if(!prompt) {
     return NextResponse.json({message: "content not present"}, {status: 300});
   }
   // Content
@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
 
 
   try {
-    const response = await Run("You are a senior software developer and manager, review and give feedback for this code - make it short and concise " + content)
+    const response = await Run("You are a senior software developer and manager, you revied some files and provided feedback on them indivually, now from these feedbacks give a general feedback and suggestions, make it small and concise -" + prompt)
     return NextResponse.json({text: response}, {status: 200})
 
   }catch(err) {

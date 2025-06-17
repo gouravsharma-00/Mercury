@@ -36,4 +36,36 @@ export default async function fetchAllFileContents(files, repoId) {
 
 //   return results;
     console.log(results)
+    try {
+        let prompt = "";
+        for(const result of results) {
+          prompt += result.content
+        }
+
+        const feedbackRes = await fetch("/api/gen/review", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ prompt }),
+        });
+
+        const feedback = await feedbackRes.json();
+        // console.log(feedback)
+        return feedback.text
+        // const response = await fetch("/api/feedback", {
+        //   method: 'POST',
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        //   body: JSON.stringify({ feedback, repoId }),
+        // })
+        // const r = await response.json()
+        // console.log(r)
+    }catch (err) {
+      console.log('error')
+      return `Error occured try again - ${err}`
+    }
+    
+
 }

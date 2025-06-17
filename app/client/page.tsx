@@ -8,6 +8,8 @@ import { useState, useEffect, Suspense } from "react";
 
 function Repo() {
     const [data, setData] = useState(null);
+    const [feed, setFeed] = useState(null);
+
     const params = useSearchParams()
 
     const ID = params.get("repo_id")
@@ -24,6 +26,16 @@ function Repo() {
         }
         run();
     }, [ID, token]);
+
+    async function handleFeed() {
+        console.log("fetch all")
+        const res = await fetchAllFileContents( data.files, ID)
+        console.log("ppppppppppppppppppppppppppppp")
+        setFeed(res)
+    }
+    useEffect(() => {
+        console.log(feed)
+    }, [feed])
 
     return (
         <>
@@ -67,7 +79,12 @@ function Repo() {
                 </>
 
             }
-            <button onClick={() => fetchAllFileContents( data.files, ID)}>set up AI Manager for this repo</button>
+            <button onClick={handleFeed}>set up AI Manager for this repo</button>
+            {feed ? 
+                <pre style={{ background: "#f4f4f4", padding: "1em", whiteSpace: "pre-wrap" }}>
+                    {feed}
+                </pre> : <p></p>}
+            
         </>
 
     )

@@ -10,6 +10,7 @@ function FileViewer() {
   const filePath = params.get("file_path");
 
   const [content, setContent] = useState(null);
+  const [report, SetReport] = useState(null);
 
   useEffect(() => {
     if (!repoId || !filePath || !token) return;
@@ -23,12 +24,33 @@ function FileViewer() {
     fetchFile();
   }, [repoId, filePath, token]);
 
+  async function handleReport() {
+    const feedbackRes = await fetch("/api/gen", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ content }),
+      });
+
+      const feedbackData = await feedbackRes.json();
+      SetReport(feedbackData)
+  }
+
   return (
     <div>
       <h2>File: {filePath}</h2>
       <pre style={{ background: "#f4f4f4", padding: "1em", whiteSpace: "pre-wrap" }}>
         {content ?? "Loading..."}
       </pre>
+      {content ? <p>Create a report on your code ? <button onClick={() => handleReport()}>Yes!!!</button></p> : <p></p>}
+      {
+      report ? 
+      <pre style={{ background: "#f4f4f4", padding: "1em", whiteSpace: "pre-wrap" }}>
+        {report.text}
+      </pre> : <p></p>
+      }
+
     </div>
   );
 }
