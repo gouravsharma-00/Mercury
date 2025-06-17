@@ -1,8 +1,9 @@
 "use client"
+export const dynamic = "force-dynamic"; // Error occurred prerendering page
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 
-export default function FileViewer() {
+function FileViewer() {
   const params = useSearchParams();
   const repoId = params.get("repo_id");
   const token = params.get("token");
@@ -30,4 +31,13 @@ export default function FileViewer() {
       </pre>
     </div>
   );
+}
+
+
+export default function Page() {
+    return(
+        <Suspense fallback={<p>loading...</p>}>
+            <FileViewer />
+        </Suspense>
+    )
 }
