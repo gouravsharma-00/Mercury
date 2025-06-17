@@ -1,5 +1,5 @@
 "use client"
-// export const dynamic = "force-dynamic"; // Error occurred prerendering page
+export const dynamic = "force-dynamic"; // Error occurred prerendering page
 import fetchAllFileContents from '@libs/gitlab/lab'
 
 import Link from "next/link";
