@@ -1,5 +1,6 @@
 "use client"
-export const dynamic = "force-dynamic"; // Error occurred prerendering page
+// export const dynamic = "force-dynamic"; // Error occurred prerendering page
+import fetchAllFileContents from '@libs/gitlab/lab'
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -19,6 +20,7 @@ function Repo() {
             const res = await fetch(`/api/gitlab/review?id=${ID}&token=${token}`);
             const result = await res.json();
             setData(result);
+            console.log(result.files)
         }
         run();
     }, [ID, token]);
@@ -38,7 +40,9 @@ function Repo() {
                         <legend>Files</legend>
                         <ul>
                             {data.files.map((file) => {
-                                return <li key={file.id}>{file.name}</li>
+                                return <li key={file.id}>
+                                    <Link target="_blank" href={`/client/file?repo_id=${ID}&token=${token}&file_path=${file.path}`}>{file.name}</Link>
+                                    </li>
                             })}
                         </ul>
                     </fieldset>
@@ -63,7 +67,7 @@ function Repo() {
                 </>
 
             }
-            <span>set up AI Manager for this repo <Link href={`/api/robot?id=${ID}&token=${token}`}>Call</Link></span>
+            <button onClick={() => fetchAllFileContents( data.files, ID)}>set up AI Manager for this repo</button>
         </>
 
     )

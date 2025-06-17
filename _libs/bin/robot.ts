@@ -4,12 +4,16 @@ const API = process.env.GOOGLE_API;
 
 const ai = new GoogleGenAI({apiKey: API});
 
-export default async function robot() {
+export default async function generateContent(content) {
 
   const response = await ai.models.generateContent({
     model: 'gemini-2.0-flash-001',
-    contents: 'Why is the sky blue?',
+    contents: `review - ${content}`,
   });
 
   console.log(response.text);
+
+  return response.text
 }
+
+
